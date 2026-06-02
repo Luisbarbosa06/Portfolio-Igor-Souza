@@ -905,16 +905,17 @@ section { padding: 90px 0; position: relative; }
   .stack-track:active { animation-play-state: paused; }
   .stack-card, .stack-card--dup {
     display: flex;
-    flex: 0 0 calc((100vw - 60px) / 3);
+    flex: 0 0 calc((100vw - 54px) / 2);
+    max-width: 280px;
     min-height: 0;
-    padding: 14px 10px;
-    gap: 10px;
-    margin-right: 10px;
+    padding: 18px 16px;
+    gap: 14px;
+    margin-right: 14px;
   }
-  .stack-card__icon { width: 34px; height: 34px; border-radius: 9px; }
-  .stack-card__icon svg { width: 16px; height: 16px; }
-  .stack-card__name { font-size: 12px; line-height: 1.2; }
-  .stack-card__desc { font-size: 9.5px; line-height: 1.3; }
+  .stack-card__icon { width: 42px; height: 42px; border-radius: 10px; }
+  .stack-card__icon svg { width: 20px; height: 20px; }
+  .stack-card__name { font-size: 14.5px; line-height: 1.2; }
+  .stack-card__desc { font-size: 11.5px; line-height: 1.4; }
   .stack-card__arrow { display: none; }
 }
 @keyframes stack-marquee {
