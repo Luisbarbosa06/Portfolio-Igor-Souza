@@ -1939,14 +1939,41 @@ section { padding: 90px 0; position: relative; }
 .edu__grid {
   display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;
 }
-@media (max-width: 860px) { .edu__grid { grid-template-columns: 1fr 1fr; gap: 14px; } }
-@media (max-width: 440px) {
-  .edu__grid { gap: 12px; }
-  .edu { padding: 16px 14px; }
-  .edu__icon { width: 38px; height: 38px; margin-bottom: 12px; }
-  .edu__inst { font-size: 15px; }
-  .edu__course { font-size: 12.5px; }
-  .edu__period { font-size: 11px; }
+/* track dissolves on desktop so cards become direct grid items */
+.edu__track { display: contents; }
+.edu--dup { display: none; }
+
+/* Mobile — single-column infinite right-to-left marquee */
+@media (max-width: 760px) {
+  .edu__grid {
+    display: block;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+  .edu__track {
+    display: flex;
+    width: max-content;
+    animation: edu-marquee 22s linear infinite;
+  }
+  .edu__track:hover,
+  .edu__track:active { animation-play-state: paused; }
+  .edu, .edu--dup {
+    display: block;
+    flex: 0 0 calc(100vw - 80px);
+    max-width: 340px;
+    margin-right: 14px;
+  }
+}
+@keyframes edu-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .edu__track { animation: none; }
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 760px) {
+  .edu__grid { overflow-x: auto; }
 }
 .edu {
   background: var(--surface);
@@ -2962,6 +2989,7 @@ footer {
     </div>
 
     <div class="edu__grid">
+      <div class="edu__track">
       <div class="edu">
         <div class="edu__icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M21 9v6M7 11v5c0 2 5 3 5 3s5-1 5-3v-5"/></svg>
@@ -2985,6 +3013,32 @@ footer {
         <div class="edu__inst">Yellow Belt</div>
         <div class="edu__course"><span data-en="Lean Six Sigma Certification — process and quality improvement methodology.">Certificação Lean Six Sigma — metodologia de melhoria de processos e qualidade.</span></div>
         <div class="edu__period">Certificado</div>
+      </div>
+      <!-- Cópia para loop contínuo (somente mobile) -->
+      <div class="edu edu--dup" aria-hidden="true">
+        <div class="edu__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M21 9v6M7 11v5c0 2 5 3 5 3s5-1 5-3v-5"/></svg>
+        </div>
+        <div class="edu__inst">UFRRJ</div>
+        <div class="edu__course"><span data-en="Bachelor's in Business Administration — Federal Rural University of Rio de Janeiro">Bacharelado em Administração — Universidade Federal Rural do Rio de Janeiro</span></div>
+        <div class="edu__period">2022 — 2026</div>
+      </div>
+      <div class="edu edu--dup" aria-hidden="true">
+        <div class="edu__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M21 9v6M7 11v5c0 2 5 3 5 3s5-1 5-3v-5"/></svg>
+        </div>
+        <div class="edu__inst">UFF</div>
+        <div class="edu__course"><span data-en="Bachelor's in Engineering — Agribusiness Engineering · Fluminense Federal University">Bacharelado em Engenharia — Engenharia de Agronegócios · Universidade Federal Fluminense</span></div>
+        <div class="edu__period"><span data-en="Attended">Cursado</span></div>
+      </div>
+      <div class="edu edu--dup" aria-hidden="true">
+        <div class="edu__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M8 13l-1 8 5-3 5 3-1-8"/></svg>
+        </div>
+        <div class="edu__inst">Yellow Belt</div>
+        <div class="edu__course"><span data-en="Lean Six Sigma Certification — process and quality improvement methodology.">Certificação Lean Six Sigma — metodologia de melhoria de processos e qualidade.</span></div>
+        <div class="edu__period">Certificado</div>
+      </div>
       </div>
     </div>
   </div>
