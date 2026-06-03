@@ -2839,11 +2839,11 @@ footer {
 
         <div class="proj__carousel" data-carousel data-project="vendas">
           <div class="proj__slides">
-            <div class="proj__slide is-active" style="background-image:url('assets/projeto_1.png')" data-caption="Análise Comercial — visão consolidada do dashboard"></div>
+            <div class="proj__slide is-active" style="background-image:url('assets/projeto_1.png')" data-caption="Análise Comercial — visão consolidada do dashboard" data-caption-en="Sales Analytics — consolidated dashboard view"></div>
           </div>
           <div class="proj__nda"><span data-en="DEMO · DATA PROTECTED BY NDA">DEMO · DADOS PROTEGIDOS POR NDA</span></div>
           <div class="proj__caption">
-            <div class="proj__caption-text is-active">Análise Comercial — visão consolidada do dashboard</div>
+            <div class="proj__caption-text is-active" data-en="Sales Analytics — consolidated dashboard view">Análise Comercial — visão consolidada do dashboard</div>
           </div>
         </div>
 
@@ -2898,7 +2898,7 @@ footer {
             <span class="proj__chip">DAX</span>
             <span class="proj__chip">SQL Server</span>
             <span class="proj__chip">Power Query · M</span>
-            <span class="proj__chip">Modelo Estrela</span>
+            <span class="proj__chip" data-en="Star Schema">Modelo Estrela</span>
             <span class="proj__chip">CONCATENATEX · HTML</span>
           </div>
           <div class="proj__role" data-en="Role: <b>BI Consultant</b> — modeling, DAX, design &amp; delivery">Papel: <b>Consultor BI</b> — modelagem, DAX, design &amp; entrega</div>
@@ -2919,11 +2919,11 @@ footer {
 
         <div class="proj__carousel" data-carousel data-project="estoque">
           <div class="proj__slides">
-            <div class="proj__slide is-active" style="background-image:url('assets/projeto_2.png')" data-caption="Gestão de Estoque e Compras — visão consolidada do dashboard"></div>
+            <div class="proj__slide is-active" style="background-image:url('assets/projeto_2.png')" data-caption="Gestão de Estoque e Compras — visão consolidada do dashboard" data-caption-en="Inventory &amp; Purchasing Management — consolidated dashboard view"></div>
           </div>
-          <div class="proj__nda">DEMO · DADOS PROTEGIDOS POR NDA</div>
+          <div class="proj__nda"><span data-en="DEMO · DATA PROTECTED BY NDA">DEMO · DADOS PROTEGIDOS POR NDA</span></div>
           <div class="proj__caption">
-            <div class="proj__caption-text is-active">Gestão de Estoque e Compras — visão consolidada do dashboard</div>
+            <div class="proj__caption-text is-active" data-en="Inventory &amp; Purchasing Management — consolidated dashboard view">Gestão de Estoque e Compras — visão consolidada do dashboard</div>
           </div>
         </div>
 
@@ -2977,10 +2977,10 @@ footer {
             <span class="proj__chip">DAX</span>
             <span class="proj__chip">SQL Server</span>
             <span class="proj__chip">Power Query · M</span>
-            <span class="proj__chip">Modelo Estrela</span>
+            <span class="proj__chip" data-en="Star Schema">Modelo Estrela</span>
             <span class="proj__chip">MCP</span>
           </div>
-          <div class="proj__role">Papel: <b>Consultor BI</b> — modelagem, DAX, design &amp; entrega</div>
+          <div class="proj__role" data-en="Role: <b>BI Consultant</b> — modeling, DAX, design &amp; delivery">Papel: <b>Consultor BI</b> — modelagem, DAX, design &amp; entrega</div>
         </footer>
       </article>
       </div><!-- /detail-estoque -->
@@ -3349,7 +3349,9 @@ footer {
         var url = s.style.backgroundImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
         var lb = document.getElementById('projLightbox');
         document.getElementById('projLightboxImg').src = url;
-        document.getElementById('projLightboxCaption').textContent = s.dataset.caption || '';
+        var isEn = document.documentElement.getAttribute('lang') === 'en';
+        document.getElementById('projLightboxCaption').textContent =
+          (isEn && s.dataset.captionEn) ? s.dataset.captionEn : (s.dataset.caption || '');
         lb.classList.add('is-open');
         document.body.style.overflow = 'hidden';
       });
