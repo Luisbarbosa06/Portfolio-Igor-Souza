@@ -885,7 +885,7 @@ section { padding: 90px 0; position: relative; }
 
 /* track dissolves on desktop so cards become direct grid items */
 .stack-track { display: contents; }
-.stack-card--dup { display: none; }
+.stack-grid .stack-card--dup { display: none; }
 
 /* Mobile — infinite right-to-left marquee, ~3 cards visible */
 @media (max-width: 760px) {
@@ -903,7 +903,7 @@ section { padding: 90px 0; position: relative; }
   }
   .stack-track:hover,
   .stack-track:active { animation-play-state: paused; }
-  .stack-card, .stack-card--dup {
+  .stack-grid .stack-card, .stack-grid .stack-card--dup {
     display: flex;
     flex: 0 0 calc((100vw - 54px) / 2);
     max-width: 280px;
